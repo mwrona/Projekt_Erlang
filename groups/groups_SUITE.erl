@@ -1,6 +1,6 @@
 -module(groups_SUITE).
 -include_lib("common_test/include/ct.hrl").
--export([all/0, groups/0, init_per_testcase/2, end_per_testcase/2]).
+-export([all/0, groups/0, init_per_testcase/2, end_per_testcase/2, init_per_group/2, end_per_group/2]).
 -export([case1/1, case2/1, case3/1]).
 
 all() ->
@@ -33,10 +33,10 @@ end_per_group( _, _Config) ->
 	ok.
 	
 case1(Config) ->
-	{?config(c, Config), ?config(g, Config)}.
+	{case1 = ?config(c, Config), group1 = ?config(g, Config)}.
 	
 case2(Config) ->
-	{?config(c, Config), ?config(g, Config)}.
+	{case2 = ?config(c, Config), group2 = ?config(g, Config)}.
 	
 case3(Config) ->
-	{?config(c, Config), ?config(g, Config)}.
+	{case3 = ?config(c, Config), group2 = ?config(g, Config)}.
